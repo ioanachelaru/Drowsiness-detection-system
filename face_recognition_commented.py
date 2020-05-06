@@ -1,10 +1,10 @@
 import cv2
 
 # We load the cascade for the face.
-face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+face_cascade = cv2.CascadeClassifier('haar_cascade_files/haarcascade_frontalface_default.xml')
 
 # We load the cascade for the eyes.
-eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
+eye_cascade = cv2.CascadeClassifier('haar_cascade_files/haarcascade_eye.xml')
 
 
 # We create a function that takes as input the image in black and white (gray) and the original image (frame),

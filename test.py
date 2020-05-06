@@ -1,45 +1,107 @@
-
 import cv2
+import dlib
+import time
 
 if __name__ == '__main__':
 
-    faceCascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-    eyeCascade = cv2.CascadeClassifier('haarcascade_eye.xml')
-
+    # get frames from webcam
     cap = cv2.VideoCapture(0)
-    cap.set(3, 640)  # set Width
-    cap.set(4, 480)  # set Height
+
+    # get frontal face detector from dlib
+    detector = dlib.get_frontal_face_detector()
+
+    # load the cascade for the eyes
+    leye = cv2.CascadeClassifier('haar_cascade_files/haarcascade_lefteye_2splits.xml')
+    reye = cv2.CascadeClassifier('haar_cascade_files/haarcascade_righteye_2splits.xml')
+
+    fps_vector = []
+    face_vetor = []
 
     while True:
-        ret, img = cap.read()
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        faces = faceCascade.detectMultiScale(
-            gray,
-            scaleFactor=1.3,
-            minNeighbors=5,
-            minSize=(30, 30)
-        )
+        start = time.time()
 
-        for (x, y, w, h) in faces:
-            cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
-            roi_gray = gray[y:y + h, x:x + w]
-            roi_color = img[y:y + h, x:x + w]
+        # read from the video stream
+        ret, frame = cap.read()
 
-            eyes = eyeCascade.detectMultiScale(
-                roi_gray,
-                scaleFactor=1.5,
-                minNeighbors=10,
-                minSize=(5, 5),
-            )
+        # transform every frame in gray scale image
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-            for (ex, ey, ew, eh) in eyes:
-                cv2.rectangle(roi_color, (ex, ey), (ex + ew, ey + eh), (0, 255, 0), 2)
+        # detect all the faces in the gray scale image
+        faces = detector(gray)
 
-            cv2.imshow('video', img)
+        # iterate through all faces
+        for face in faces:
 
-        k = cv2.waitKey(30) & 0xff
-        if k == 27:  # press 'ESC' to quit
+            # get the extremities of the current face
+            x, y = face.left(), face.top()
+            w, h = face.right(), face.bottom()
+
+            # draw rectangle around the face
+            cv2.rectangle(frame, (x, y), (w, h), (0, 255, 0), 3)
+
+            # Region of interest (ROI) - the upper half of the face
+            # get the ROI in the black and white image
+            h = (h + y) // 2
+            roi_gray = gray[y:h, x:w]
+
+            # get the ROI in the colored image
+            roi_color = frame[y:h, x:w]
+
+            # apply the detectMultiScale method to locate one or several eyes on the face
+            # right eye
+            left_eye = leye.detectMultiScale(roi_gray, scaleFactor=1.1, minNeighbors=10, minSize=(30, 30),
+                                             flags=cv2.CASCADE_SCALE_IMAGE)
+            # left eye
+            right_eye = reye.detectMultiScale(roi_gray, scaleFactor=1.1, minNeighbors=10, minSize=(30, 30),
+                                              flags=cv2.CASCADE_SCALE_IMAGE)
+
+            # for each detected right eye:
+            for (ex, ey, ew, eh) in right_eye:
+
+                # draw rectangle around the eye
+                cv2.rectangle(roi_color, (ex, ey), (ex + ew, ey + eh), (255, 255, 0), 2)
+
+                eye = roi_gray[ey: ey + eh, ex: ex + ew]
+                cv2.imshow('eye', eye)
+                # break
+
+            # for each detected left eye:
+            for (ex, ey, ew, eh) in left_eye:
+
+                # draw rectangle around the eye
+                cv2.rectangle(roi_color, (ex, ey), (ex + ew, ey + eh), (255, 255, 0), 2)
+
+                eye = roi_gray[ey: ey + eh, ex: ex + ew]
+                cv2.imshow('eye', eye)
+                # break
+
+        cv2.imshow("cropped gray face", roi_gray)
+        cv2.imshow("frame", frame)
+
+        # if 's' typed on the keyboard:
+        if cv2.waitKey(1) == ord('s'):
+
+            # stop the loop
             break
 
+        end = time.time()
+        seconds = end - start
+        fps = 5.0 / seconds
+
+        fps_vector.append(fps)
+        face_vetor.append(len(faces))
+
+        print('faces: %.2f' % len(faces))
+        print('fps: %.2f' % fps)
+
+    average_fps = sum(fps_vector) / len(fps_vector)
+    averate_faces = sum(face_vetor) / len(face_vetor)
+
+    print("MEAN FPS DLIB: %.2f" % average_fps)
+    print("MEAN DETECTED FACES DLIB: %.2f" % averate_faces)
+
+    # turn the webcam off
     cap.release()
+
+    # destroy all the windows inside which the images were displayed
     cv2.destroyAllWindows()
