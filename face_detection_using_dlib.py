@@ -29,52 +29,59 @@ if __name__ == '__main__':
         # detect all the faces in the gray scale image
         faces = detector(gray)
 
-        # iterate through all faces
-        for face in faces:
+        # if no face is detected yet
+        if len(faces) == 0:
+            print('no face found')
+        else:
 
-            # get the extremities of the current face
-            x, y = face.left(), face.top()
-            w, h = face.right(), face.bottom()
+            # iterate through all faces
+            for face in faces:
 
-            # draw rectangle around the face
-            cv2.rectangle(frame, (x, y), (w, h), (0, 255, 0), 3)
+                # get the extremities of the current face
+                x, y = face.left(), face.top()
+                w, h = face.right(), face.bottom()
 
-            # Region of interest (ROI) - the upper half of the face
-            # get the ROI in the black and white image
-            h = (h + y) // 2
-            roi_gray = gray[y:h, x:w]
+                # draw rectangle around the face
+                cv2.rectangle(frame, (x, y), (w, h), (0, 255, 0), 3)
 
-            # get the ROI in the colored image
-            roi_color = frame[y:h, x:w]
+                # Region of interest (ROI) - the upper half of the face
+                # get the ROI in the black and white image
+                h = (h + y) // 2
+                roi_gray = gray[y:h, x:w]
 
-            # apply the detectMultiScale method to locate one or several eyes on the face
-            # right eye
-            left_eye = leye.detectMultiScale(roi_gray, scaleFactor=1.1, minNeighbors=10, minSize=(30, 30),
-                                             flags=cv2.CASCADE_SCALE_IMAGE)
-            # left eye
-            right_eye = reye.detectMultiScale(roi_gray, scaleFactor=1.1, minNeighbors=10, minSize=(30, 30),
-                                              flags=cv2.CASCADE_SCALE_IMAGE)
+                # get the ROI in the colored image
+                roi_color = frame[y:h, x:w]
 
-            # for each detected right eye:
-            for (ex, ey, ew, eh) in right_eye:
-                # draw rectangle around the eye
-                cv2.rectangle(roi_color, (ex, ey), (ex + ew, ey + eh), (255, 255, 0), 2)
+                cv2.imshow("cropped gray face", roi_gray)
 
-                eye = roi_gray[ey: ey + eh, ex: ex + ew]
-                cv2.imshow('eye', eye)
-                # break
+                # apply the detectMultiScale method to locate one or several eyes on the face
+                # right eye
+                left_eye = leye.detectMultiScale(roi_gray, scaleFactor=1.1, minNeighbors=10, minSize=(30, 30),
+                                                 flags=cv2.CASCADE_SCALE_IMAGE)
+                # left eye
+                right_eye = reye.detectMultiScale(roi_gray, scaleFactor=1.1, minNeighbors=10, minSize=(30, 30),
+                                                  flags=cv2.CASCADE_SCALE_IMAGE)
 
-            # for each detected left eye:
-            for (ex, ey, ew, eh) in left_eye:
-                # draw rectangle around the eye
-                cv2.rectangle(roi_color, (ex, ey), (ex + ew, ey + eh), (255, 255, 0), 2)
+                # for each detected right eye:
+                for (ex, ey, ew, eh) in right_eye:
+                    # draw rectangle around the eye
+                    cv2.rectangle(roi_color, (ex, ey), (ex + ew, ey + eh), (255, 255, 0), 2)
 
-                eye = roi_gray[ey: ey + eh, ex: ex + ew]
-                cv2.imshow('eye', eye)
-                # break
+                    eye = roi_gray[ey: ey + eh, ex: ex + ew]
+
+                    # break
+
+                # for each detected left eye:
+                for (ex, ey, ew, eh) in left_eye:
+                    # draw rectangle around the eye
+                    cv2.rectangle(roi_color, (ex, ey), (ex + ew, ey + eh), (255, 255, 0), 2)
+
+                    eye = roi_gray[ey: ey + eh, ex: ex + ew]
+
+                    # break
 
         # display the outputs
-        cv2.imshow("cropped gray face", roi_gray)
+        # cv2.imshow("cropped gray face", roi_gray)
         cv2.imshow("frame", frame)
 
         # if 's' typed on the keyboard:
@@ -84,7 +91,7 @@ if __name__ == '__main__':
 
         end = time.time()
         seconds = end - start
-        fps = 5.0 / seconds
+        fps = 1.0 / seconds
 
         fps_vector.append(fps)
         face_vetor.append(len(faces))

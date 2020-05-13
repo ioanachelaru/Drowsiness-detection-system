@@ -1,3 +1,7 @@
+pygame
+tensorflow
+keras
+numpy
 mtcnn
 dlib
 cv2
