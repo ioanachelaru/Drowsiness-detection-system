@@ -19,7 +19,6 @@ sound = mixer.Sound('alarm.wav')
 
 
 def detect_face(img, cascade=face_cascade, minimum_feature_size=(20, 20)):
-
     # if the cascade argument is missing
     if cascade.empty():
         raise (Exception("There was a problem loading your Haar Cascade xml file."))
@@ -38,7 +37,6 @@ def detect_face(img, cascade=face_cascade, minimum_feature_size=(20, 20)):
 
 
 def crop_eyes(frame):
-
     # convert image to grayscale
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
@@ -127,7 +125,6 @@ def crop_eyes(frame):
 
 # process the image to have the same format as the training data
 def cnn_preprocess(img):
-
     img = img.astype('float32')
 
     # normalize the image
@@ -140,7 +137,6 @@ def cnn_preprocess(img):
 
 
 def build_model():
-
     # dimensions of the photos
     height = 26
     width = 34
@@ -158,13 +154,13 @@ def build_model():
     model.add(MaxPooling2D(pool_size=(2, 2)))
 
     # second layer of convolution
-    model.add(Conv2D(64, (2, 2), padding='same'))
+    model.add(Conv2D(64, (3, 3), padding='same'))
     model.add(Activation('relu'))
 
     model.add(MaxPooling2D(pool_size=(2, 2)))
 
     # third layer of convolution
-    model.add(Conv2D(128, (2, 2), padding='same'))
+    model.add(Conv2D(128, (3, 3), padding='same'))
     model.add(Activation('relu'))
 
     model.add(MaxPooling2D(pool_size=(2, 2)))
@@ -191,10 +187,7 @@ def build_model():
     return model
 
 
-def main():
-    # open the camera
-    camera = cv2.VideoCapture(0)
-
+def detect(camera):
     # set parameters for the output
     font = cv2.FONT_HERSHEY_COMPLEX_SMALL
     score = 0
@@ -202,7 +195,7 @@ def main():
 
     # load model
     model = build_model()
-    model.load_weights('models/eyeClassifier_v1.hdf5')
+    model.load_weights('models/eyeClassifier_v6.hdf5')
 
     while True:
 
@@ -221,8 +214,8 @@ def main():
             left_eye, right_eye = eyes
 
         # print both eyes
-        cv2.imshow('ochi stang', left_eye)
-        cv2.imshow('ochi drept', right_eye)
+        # cv2.imshow('ochi stang', left_eye)
+        # cv2.imshow('ochi drept', right_eye)
 
         prediction_right_eye = model.predict(cnn_preprocess(right_eye)) > 0.5
         prediction_left_eye = model.predict(cnn_preprocess(left_eye)) > 0.5
@@ -260,11 +253,9 @@ def main():
         # if score gratter than 15
         if score > 15:
 
-            # person is feeling sleepy so we beep the alarm
+            # person is feeling sleepy so we play the alarm
             try:
                 sound.play()
-
-            # isplaying = False
             except:
                 pass
 
@@ -283,6 +274,12 @@ def main():
             # print thicc border on the frame
             cv2.rectangle(frame, (0, 0), (width, height), (0, 0, 255), thicc)
 
+        else:
+            try:
+                sound.stop()
+            except:
+                pass
+
         # show the frame
         cv2.imshow('Drowsiness detection', frame)
 
@@ -290,7 +287,14 @@ def main():
 
         # if the `q` key was pressed, break from the loop
         if key == ord('q'):
-            break
+            return
+
+
+def main():
+    # open the camera
+    camera = cv2.VideoCapture(0)
+
+    detect(camera)
 
     # clean up
     cv2.destroyAllWindows()
