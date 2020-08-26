@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ffaaad17-422d-4346-9e14-346d977a33a3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/model_training/Open-Closed eye classifier_v2.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,8 +38,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/drowsiness_detection.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="38" lean-forward="true" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
+            <state relative-caret-position="85">
+              <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -49,8 +51,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="357">
-                <caret line="21" selection-start-line="21" selection-end-line="21" />
+              <first_editor relative-caret-position="289">
+                <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
               </first_editor>
               <second_editor />
             </state>
@@ -141,16 +143,17 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Drowsiness-detection-system\haar_cascade_files" />
-      <recent name="D:\Drowsiness-detection-system\" />
-      <recent name="D:\Drowsiness-detection-system" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Drowsiness-detection-system\model_training" />
       <recent name="D:\Drowsiness-detection-system\test_imgs" />
       <recent name="D:\Drowsiness-detection-system\models" />
       <recent name="D:\Drowsiness-detection-system" />
       <recent name="D:\Drowsiness-detection-system\haar_cascade_files" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Drowsiness-detection-system\haar_cascade_files" />
+      <recent name="D:\Drowsiness-detection-system\" />
+      <recent name="D:\Drowsiness-detection-system" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -325,7 +328,8 @@
       <workItem from="1592125935406" duration="1086000" />
       <workItem from="1592852330101" duration="308000" />
       <workItem from="1593080414588" duration="17457000" />
-      <workItem from="1598433836506" duration="1725000" />
+      <workItem from="1598433836506" duration="1876000" />
+      <workItem from="1598436285994" duration="644000" />
     </task>
     <servers />
   </component>
@@ -362,7 +366,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89470000" />
+    <option name="totallyTimeSpent" value="90265000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -377,7 +381,7 @@
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1818792" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18456376" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -477,19 +481,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/drowsiness_detection.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="38" lean-forward="true" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
+        <state relative-caret-position="85">
+          <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/model_training/Open-Closed eye classifier_v2.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="357">
-            <caret line="21" selection-start-line="21" selection-end-line="21" />
+          <first_editor relative-caret-position="289">
+            <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
           </first_editor>
           <second_editor />
         </state>

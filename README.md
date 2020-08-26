@@ -15,6 +15,16 @@ using dlib's shape_predictor_68_face_landmarks.dat
 because is a more effective method than the previous one.
 <br><br>If both eyes are detected they are passed to a convolutional 
 neural network build and trained for their classification.
+<br><br>If both eyes are classified as closed, a counter will increase
+its value, otherwise, it will be decreased. When the counter reaches a threshold, 
+the driver will be declared drowsy, an alarm will start ringing, and a red border 
+will be added to the application's window. The alarm will stop and the border will 
+disappear when the value of the counter will be again smaller than the threshold.
+
+### The Convolutional neural network
+
+It was built and trained using Google Colaboratory and a dataset of 
+around 3000 images of open and closed left eyes.
 <br><br>The CNN has been trained with only left eyes, that way creating 
 a binary classifier since we're not interested in differentiating 
 the right from the left eye. For that reason, before sending the 
