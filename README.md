@@ -13,9 +13,9 @@ The face is detected using haar-like features since is a quick and
 efficient enough method and the eyes are detected 
 using dlib's shape_predictor_68_face_landmarks.dat 
 because is a more effective method than the previous one.
-<br>If both eyes are detected they are passed to a convolutional 
+<br><br>If both eyes are detected they are passed to a convolutional 
 neural network build and trained for their classification.
-<br>The CNN has been trained with only left eyes, that way creating 
+<br><br>The CNN has been trained with only left eyes, that way creating 
 a binary classifier since we're not interested in differentiating 
 the right from the left eye. For that reason, before sending the 
 segment containing the right eye detected, a flip operation is applied 
