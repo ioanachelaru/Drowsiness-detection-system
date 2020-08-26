@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ffaaad17-422d-4346-9e14-346d977a33a3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/models/eyeClassifier_v2.hdf5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_imgs/face.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drowsiness_detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/drowsiness_detection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/face_detection_using_dlib.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/blinkModel.hdf5" beforeDir="false" afterPath="$PROJECT_DIR$/models/eyeClassifier_v6.hdf5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/eyeClassifier_v1.hdf5" beforeDir="false" afterPath="$PROJECT_DIR$/models/eyeClassifier_v5.hdf5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,29 +33,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="30" column="46" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/drowsiness_detection.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="119">
+              <caret line="7" column="24" lean-forward="true" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
-                <element signature="e#699#1183#0" />
-                <element signature="e#1209#4395#0" />
-                <element signature="e#4493#4655#0" />
-                <element signature="e#4679#5869#0" />
               </folding>
             </state>
           </provider>
@@ -95,13 +71,13 @@
         <option value="$PROJECT_DIR$/test2.py" />
         <option value="$PROJECT_DIR$/face_recognition_commented.py" />
         <option value="$PROJECT_DIR$/detect_blinks.py" />
-        <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/face_detection_using_dlib.py" />
         <option value="$PROJECT_DIR$/tests.py" />
         <option value="$PROJECT_DIR$/drowsiness_detection.py" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
       </list>
     </option>
   </component>
@@ -337,6 +313,7 @@
       <workItem from="1592125935406" duration="1086000" />
       <workItem from="1592852330101" duration="308000" />
       <workItem from="1593080414588" duration="17457000" />
+      <workItem from="1598433836506" duration="231000" />
     </task>
     <servers />
   </component>
@@ -388,7 +365,7 @@
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17919463" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1818792" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -404,12 +381,12 @@
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.26675978" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32960895" />
-      <window_info anchor="right" id="Coverage" side_tool="true" weight="0.2865772" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Coverage" order="5" side_tool="true" weight="0.2865772" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">

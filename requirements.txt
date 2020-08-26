@@ -1,7 +1,7 @@
-pygame
+cv2
+dlib
+imutils
 tensorflow
 keras
 numpy
-mtcnn
-dlib
-cv2
+pygame
